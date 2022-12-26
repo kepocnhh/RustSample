@@ -52,4 +52,16 @@ fn main() {
     let z: char = 'ℤ';
     let heart_eyed_cat = '😻';
     println!("character: c {c} z {z} heart_eyed_cat {heart_eyed_cat}");
+
+    // The Tuple Type
+    let tuple: (i32, f64, u8) = (500, 6.4, 1);
+    println!("tuple: 0 {} 1 {} 2 {}", tuple.0, tuple.1, tuple.2);
+    let tup = (500, 6.4, "foo");
+    let (x, y, z) = tup;
+    let tup0 = tup.0;
+    let tup1 = tup.1;
+    let tup2 = tup.2;
+    println!("[x = {x} | 0 = {tup0}]");
+    println!("[y = {y} | 1 = {tup1}]");
+    println!("[z = {z} | 2 = {tup2}]");
 }
