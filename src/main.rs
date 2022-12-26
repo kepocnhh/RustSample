@@ -6,21 +6,35 @@ fn main() {
 
     let secret_number = rand::thread_rng().gen_range(1..=100);
 
-    println!("Please input your guess.");
+    loop {
+        println!("Please input your guess.");
 
-    let mut guess = String::new();
+        let mut text = String::new();
 
-    std::io::stdin()
-        .read_line(&mut guess)
-        .expect("Failed to read line");
+        std::io::stdin()
+            .read_line(&mut text)
+            .expect("Failed to read line");
 
-    let guess: u32 = guess.trim().parse().expect("Please type a number!");
+        let guess: u32 = match text.trim().parse() {
+            Ok(it) => it,
+            Err(_) => {
+                if text.trim() == "quit" {
+                    break
+                } else {
+                    continue
+                }
+            },
+        };
 
-    println!("You guessed: {guess}");
+        println!("You guessed: {guess}");
 
-    match guess.cmp(&secret_number) {
-        Ordering::Less => println!("Too small!"),
-        Ordering::Greater => println!("Too big!"),
-        Ordering::Equal => println!("You win!"),
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Too small!"),
+            Ordering::Greater => println!("Too big!"),
+            Ordering::Equal => {
+                println!("You win!");
+                break
+            },
+        }
     }
 }
