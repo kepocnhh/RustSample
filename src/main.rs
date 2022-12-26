@@ -64,4 +64,19 @@ fn main() {
     println!("[x = {x} | 0 = {tup0}]");
     println!("[y = {y} | 1 = {tup1}]");
     println!("[z = {z} | 2 = {tup2}]");
+
+    // The Array Type
+    let array = [1, 2, 3, 4, 5];
+    println!("array: [{}]", array.map(|it| it.to_string()).join(","));
+    let first = array[0];
+    println!("first: {first}");
+    // let five = array[5];
+    let ints: [i32; 5] = [1, 2, 3, 4, 5];
+    println!("ints: [{}]", ints.map(|it| it.to_string()).join(","));
+    let triplets = [3; 5];
+    println!("triplets: [{}]", triplets.map(|it| it.to_string()).join(","));
+
+    for it in 0..6 {
+        println!("{it}] {}", array[it].to_string()); // panic
+    }
 }
