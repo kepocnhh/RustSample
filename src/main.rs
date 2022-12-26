@@ -24,4 +24,16 @@ fn main() {
     println!("u128 max: {integer_u128}");
     println!("isize max: {integer_isize}");
     println!("usize max: {integer_usize}");
+
+    // Number literals
+    const INTEGER_DECIMAL: isize = 98_222;
+    const INTEGER_HEX: isize = 0xff;
+    const INTEGER_OCTAL: isize = 0o77;
+    const INTEGER_BINARY: isize = 0b1111_0000;
+    const INTEGER_BYTE: u8 = b'A';
+    println!("INTEGER_DECIMAL: {INTEGER_DECIMAL}");
+    println!("INTEGER_HEX: {INTEGER_HEX}");
+    println!("INTEGER_OCTAL: {INTEGER_OCTAL}");
+    println!("INTEGER_BINARY: {INTEGER_BINARY}");
+    println!("INTEGER_BYTE: {INTEGER_BYTE}");
 }
