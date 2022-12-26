@@ -1,28 +1,27 @@
 fn main() {
-    // mut
-    let mut x = 5;
-    println!("The value of x is: {x}");
-    x = 6;
-    println!("The value of x is: {x}");
-
-    // const
-    const NUMBER_U8_MAX: u8 = u8::MAX;
-    println!("NUMBER_U8_MAX: {NUMBER_U8_MAX}");
-    const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
-    println!("THREE_HOURS_IN_SECONDS: {THREE_HOURS_IN_SECONDS}");
-
-    // shadowing
-    let x = 5;
-    let x = x + 1;
-
-    {
-        let x = x * 2;
-        println!("The value of x in the inner scope is: {x}");
-    }
-
-    println!("The value of x is: {x}");
-
-    // shadowing vs mut
-    let spaces = "   ";
-    let spaces = spaces.len();
+    // integer
+    let integer_i8: i8 = i8::MAX;
+    let integer_u8: u8 = u8::MAX;
+    let integer_i16: i16 = i16::MAX;
+    let integer_u16: u16 = u16::MAX;
+    let integer_i32: i32 = i32::MAX;
+    let integer_u32: u32 = u32::MAX;
+    let integer_i64: i64 = i64::MAX;
+    let integer_u64: u64 = u64::MAX;
+    let integer_i128: i128 = i128::MAX;
+    let integer_u128: u128 = u128::MAX;
+    let integer_isize: isize = isize::MAX;
+    let integer_usize: usize = usize::MAX;
+    println!("i8 max: {integer_i8}");
+    println!("u8 max: {integer_u8}");
+    println!("i16 max: {integer_i16}");
+    println!("u16 max: {integer_u16}");
+    println!("i32 max: {integer_i32}");
+    println!("u32 max: {integer_u32}");
+    println!("i64 max: {integer_i64}");
+    println!("u64 max: {integer_u64}");
+    println!("i128 max: {integer_i128}");
+    println!("u128 max: {integer_u128}");
+    println!("isize max: {integer_isize}");
+    println!("usize max: {integer_usize}");
 }
