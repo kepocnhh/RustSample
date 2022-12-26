@@ -1,7 +1,13 @@
 [package]
 name = "rust_sample"
+description = "A short description of my sample package."
 version = "0.1.0"
-edition = "2021"
 authors = ["Stanley Wintergreen <kepocnhh@gmail.com>"]
+readme = "README.md"
+repository = "https://github.com/kepocnhh/RustSample"
+publish = false
+edition = "2021"
+rust-version = "1.66.0"
 
 [dependencies]
+rand = "0.8.5"
