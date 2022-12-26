@@ -54,4 +54,28 @@ fn main() {
         count += 1;
     }
     println!("End count = {count}");
+
+    let mut number = 3;
+    while number != 0 {
+        number -= 1;
+    }
+    println!("number: {number}");
+
+    let array = [10, 20, 30, 40, 50];
+    let mut index = 0;
+    while index < 5 {
+        println!("the value {index} is: {}", array[index]);
+        index += 1;
+    }
+
+    for it in array {
+        println!("the value {index} is: {it}");
+    }
+
+    for number in 1..4 {
+        println!("number: {number}");
+    }
+    for number in (1..4).rev() {
+        println!("reversed: {number}");
+    }
 }
