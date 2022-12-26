@@ -36,4 +36,20 @@ fn main() {
     println!("INTEGER_OCTAL: {INTEGER_OCTAL}");
     println!("INTEGER_BINARY: {INTEGER_BINARY}");
     println!("INTEGER_BYTE: {INTEGER_BYTE}");
+
+    // Floating-Point Types
+    let x = 2.0; // f64
+    let y: f32 = 3.0; // f32
+    println!("float: 64 {x} 32 {y}");
+
+    // The Boolean Type
+    let t = true;
+    let f: bool = false;
+    println!("boolean: t {t} f {f}");
+
+    // The Character Type
+    let c = 'c';
+    let z: char = 'ℤ';
+    let heart_eyed_cat = '😻';
+    println!("character: c {c} z {z} heart_eyed_cat {heart_eyed_cat}");
 }
