@@ -1,37 +1,10 @@
 fn main() {
-    let word = first_word("hello world");
-    println!("first word: \"{}\"", word);
-
-    let text = String::from("hello world");
-    let word = first_word(&text);
-    println!("first word: \"{}\"", word);
-    let word = first_word(&text[0..text.len()]);
-    println!("first word: \"{}\"", word);
-    let word = first_word(&text[..text.len()]);
-    println!("first word: \"{}\"", word);
-    let word = first_word(&text[0..]);
-    println!("first word: \"{}\"", word);
-    let word = first_word(&text[..]);
-    println!("first word: \"{}\"", word);
-
-    let text = "hello world";
-    let word = first_word(text);
-    println!("first word: \"{}\"", word);
-    let word = first_word(&text[0..text.len()]);
-    println!("first word: \"{}\"", word);
-    let word = first_word(&text[..text.len()]);
-    println!("first word: \"{}\"", word);
-    let word = first_word(&text[0..]);
-    println!("first word: \"{}\"", word);
-    let word = first_word(&text[..]);
-    println!("first word: \"{}\"", word);
-}
-
-fn first_word(text: &str) -> &str {
-    for (i, &item) in text.as_bytes().iter().enumerate() {
-        if item == b' ' {
-            return &text[..i];
-        }
-    }
-    return text
+    let a = [1, 2, 3, 4, 5];
+    let slice = &a[1..3];
+    assert_eq!(slice, [2, 3]);
+    assert_ne!(slice, [1, 2]);
+    assert_eq!(a[1..3], [2, 3]);
+    assert_ne!(a[1..3], a[1..4]);
+    let item = slice.get(1).expect("TODO");
+    assert_eq!(item, &3)
 }
