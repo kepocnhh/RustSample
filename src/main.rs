@@ -1,17 +1,10 @@
 fn main() {
-    let s = String::from("foo");
-    let len = calculate_length(&s);
-    println!("The length of '{}' is {}.", s, len);
-
-    let mut ms = String::from("bar");
-    change(&mut ms);
-    println!("Mutable: '{}'", ms);
-}
-
-fn calculate_length(s: &String) -> usize {
-    s.len()
-}
-
-fn change(s: &mut String) {
-    s.push_str(", world");
+    let a = [1, 2, 3, 4, 5];
+    let slice = &a[1..3];
+    assert_eq!(slice, [2, 3]);
+    assert_ne!(slice, [1, 2]);
+    assert_eq!(a[1..3], [2, 3]);
+    assert_ne!(a[1..3], a[1..4]);
+    let item = slice.get(1).expect("TODO");
+    assert_eq!(item, &3)
 }
