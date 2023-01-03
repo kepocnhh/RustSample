@@ -1,10 +1,11 @@
 fn main() {
-    let user = User {
+    let mut user = User {
         active: true,
         username: String::from("someusername123"),
         email: String::from("someone@example.com"),
         sign_in_count: 1,
     };
+    user.username = String::from("anotheremail@example.com");
     println!("User: {}", user.username)
 }
 
