@@ -1,20 +1,37 @@
 fn main() {
-    let s = String::from("hello world");
-    let slice = &s[0..5];
-    println!("slice [0..5]: \"{}\"", slice);
-    let slice = &s[6..11];
-    println!("slice [6..11]: \"{}\"", slice);
-    let slice = &s[..5];
-    println!("slice [..5]: \"{}\"", slice);
-    let len = s.len();
-    let slice = &s[6..len];
-    println!("slice [6..len]: \"{}\"", slice);
-    let slice = &s[6..s.len()];
-    println!("slice [6..s.len()]: \"{}\"", slice);
-    let slice = &s[6..];
-    println!("slice [6..]: \"{}\"", slice);
-    let slice = &s[0..len];
-    println!("slice [0..len]: \"{}\"", slice);
-    let slice = &s[..];
-    println!("slice [..]: \"{}\"", slice);
+    let word = first_word("hello world");
+    println!("first word: \"{}\"", word);
+
+    let text = String::from("hello world");
+    let word = first_word(&text);
+    println!("first word: \"{}\"", word);
+    let word = first_word(&text[0..text.len()]);
+    println!("first word: \"{}\"", word);
+    let word = first_word(&text[..text.len()]);
+    println!("first word: \"{}\"", word);
+    let word = first_word(&text[0..]);
+    println!("first word: \"{}\"", word);
+    let word = first_word(&text[..]);
+    println!("first word: \"{}\"", word);
+
+    let text = "hello world";
+    let word = first_word(text);
+    println!("first word: \"{}\"", word);
+    let word = first_word(&text[0..text.len()]);
+    println!("first word: \"{}\"", word);
+    let word = first_word(&text[..text.len()]);
+    println!("first word: \"{}\"", word);
+    let word = first_word(&text[0..]);
+    println!("first word: \"{}\"", word);
+    let word = first_word(&text[..]);
+    println!("first word: \"{}\"", word);
+}
+
+fn first_word(text: &str) -> &str {
+    for (i, &item) in text.as_bytes().iter().enumerate() {
+        if item == b' ' {
+            return &text[..i];
+        }
+    }
+    return text
 }
