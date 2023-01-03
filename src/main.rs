@@ -1,10 +1,16 @@
 fn main() {
-    let a = [1, 2, 3, 4, 5];
-    let slice = &a[1..3];
-    assert_eq!(slice, [2, 3]);
-    assert_ne!(slice, [1, 2]);
-    assert_eq!(a[1..3], [2, 3]);
-    assert_ne!(a[1..3], a[1..4]);
-    let item = slice.get(1).expect("TODO");
-    assert_eq!(item, &3)
+    let user = User {
+        active: true,
+        username: String::from("someusername123"),
+        email: String::from("someone@example.com"),
+        sign_in_count: 1,
+    };
+    println!("User: {}", user.username)
+}
+
+struct User {
+    active: bool,
+    username: String,
+    email: String,
+    sign_in_count: u64,
 }
