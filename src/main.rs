@@ -1,17 +1,14 @@
 fn main() {
-    let s = String::from("foo");
-    let len = calculate_length(&s);
-    println!("The length of '{}' is {}.", s, len);
-
-    let mut ms = String::from("bar");
-    change(&mut ms);
-    println!("Mutable: '{}'", ms);
+    let text = String::from("foo bar baz");
+    let i = first_word(&text);
+    println!("first word: {}", i);
 }
 
-fn calculate_length(s: &String) -> usize {
+fn first_word(s: &String) -> usize {
+    for (i, &item) in s.as_bytes().iter().enumerate() {
+        if item == b' ' {
+            return i;
+        }
+    }
     s.len()
-}
-
-fn change(s: &mut String) {
-    s.push_str(", world");
 }
