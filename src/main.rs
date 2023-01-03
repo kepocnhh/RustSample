@@ -5,10 +5,11 @@ fn main() {
     };
 
     println!("rectangle is {:?}", rectangle);
+    println!("rectangle width {}", rectangle.get_width());
 
     println!(
         "The area of the rectangle is {} square pixels.",
-        area(&rectangle)
+        rectangle.area()
     );
 }
 
@@ -18,6 +19,12 @@ struct Rectangle {
     height: u32,
 }
 
-fn area(rectangle: &Rectangle) -> u32 {
-    rectangle.width * rectangle.height
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+
+    fn get_width(&self) -> u32 {
+        self.width
+    }
 }
