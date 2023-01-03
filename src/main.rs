@@ -1,12 +1,20 @@
 fn main() {
-    let black = Color(0, 0, 0);
-    let origin = Point(0, 0, 0);
-    println!("color: {}", black.1);
-    println!("point: {}", origin.1);
-    let subject = AlwaysEqual;
-    // assert_eq!(subject, subject)
+    let rectangle = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        area(&rectangle)
+    );
 }
 
-struct Color(i32, i32, i32);
-struct Point(i32, i32, i32);
-struct AlwaysEqual;
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn area(rectangle: &Rectangle) -> u32 {
+    rectangle.width * rectangle.height
+}
