@@ -16,6 +16,8 @@ fn main() {
     let r2 = Rectangle { width: 40, height: 40 };
     println!("Can hold? {}", rectangle.can_hold(&r1));
     println!("Can hold? {}", rectangle.can_hold(&r2));
+
+    println!("rectangle is {:?}", Rectangle::square(30));
 }
 
 #[derive(Debug)]
@@ -25,6 +27,13 @@ struct Rectangle {
 }
 
 impl Rectangle {
+    fn square(size: u32) -> Self {
+        Self {
+            width: size,
+            height: size,
+        }
+    }
+
     fn area(&self) -> u32 {
         self.width * self.height
     }
