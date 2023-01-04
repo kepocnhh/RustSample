@@ -1,8 +1,10 @@
 fn main() {
-    let some_number = Some(5);
-    println!("{:?}", some_number);
-    let some_char = Some('e');
-    println!("{:?}", some_char);
-    let none_number: Option<i32> = None;
-    println!("{:?}", none_number);
+    let dice_roll = 9;
+    match dice_roll {
+        3 => println!("dice: 3"),
+        7 => println!("dice: 7"),
+        other => println!("dice: {other}"),
+        _ => todo!("Impossible!"),
+        _ => ()
+    }
 }
