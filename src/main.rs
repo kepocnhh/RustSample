@@ -1,18 +1,23 @@
 fn main() {
-    let home = IpAddr::V4(127, 0, 0, 1);
-    route(home);
-    let loopback = IpAddr::V6(String::from("::1"));
-    route(loopback);
-    route(IpAddr::V4(128, 0, 0, 1));
-    route(IpAddr::V6(String::from("bar")));
+    let item = Message::Quit;
+    println(item);
+    let item = Message::Move { x: 1, y: 2 };
+    println(item);
+    let item = Message::Write(String::from("foo"));
+    println(item);
+    let item = Message::ChangeColor(1, 2, 3);
+    println(item);
+    println(Message::Quit);
 }
 
 #[derive(Debug)]
-enum IpAddr {
-    V4(u8, u8, u8, u8),
-    V6(String),
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(i32, i32, i32),
 }
 
-fn route(item: IpAddr) {
+fn println(item: Message) {
     println!("{:?}", item)
 }
