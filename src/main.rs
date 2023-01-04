@@ -1,48 +1,8 @@
 fn main() {
-    let rectangle = Rectangle {
-        width: 30,
-        height: 50,
-    };
-
-    println!("rectangle is {:?}", rectangle);
-    println!("rectangle width {}", rectangle.get_width());
-
-    println!(
-        "The area of the rectangle is {} square pixels.",
-        rectangle.area()
-    );
-
-    let r1 = Rectangle { width: 10, height: 40 };
-    let r2 = Rectangle { width: 40, height: 40 };
-    println!("Can hold? {}", rectangle.can_hold(&r1));
-    println!("Can hold? {}", rectangle.can_hold(&r2));
-
-    println!("rectangle is {:?}", Rectangle::square(30));
-}
-
-#[derive(Debug)]
-struct Rectangle {
-    width: u32,
-    height: u32,
-}
-
-impl Rectangle {
-    fn square(size: u32) -> Self {
-        Self {
-            width: size,
-            height: size,
-        }
-    }
-
-    fn area(&self) -> u32 {
-        self.width * self.height
-    }
-
-    fn get_width(&self) -> u32 {
-        self.width
-    }
-
-    fn can_hold(&self, other: &Rectangle) -> bool {
-        self.width > other.width && self.height > other.height
-    }
+    let some_number = Some(5);
+    println!("{:?}", some_number);
+    let some_char = Some('e');
+    println!("{:?}", some_char);
+    let none_number: Option<i32> = None;
+    println!("{:?}", none_number);
 }
