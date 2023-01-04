@@ -29,6 +29,17 @@ mod baz {
     }
 }
 
+use std::fmt;
+use std::io::Result as IoResult;
+
+fn function1() -> fmt::Result {
+    todo!()
+}
+
+fn function2() -> IoResult<()> {
+    todo!()
+}
+
 pub fn run() {
     baz::function()
 }
