@@ -1,3 +1,3 @@
 fn main() {
-    todo!()
+    rust_sample::run()
 }
