@@ -13,9 +13,22 @@ mod foo {
             }
         }
     }
+
+    pub mod bar {
+        pub fn println() {
+            println!("foo bar");
+        }
+    }
+}
+
+use crate::foo::bar::println;
+
+mod baz {
+    pub fn function() {
+        super::println()
+    }
 }
 
 pub fn run() {
-    let item = foo::Bar::new();
-    println!("{:?}", item);
+    baz::function()
 }
