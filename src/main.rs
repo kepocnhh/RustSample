@@ -1,8 +1,23 @@
 fn main() {
-    let some_number = Some(5);
-    println!("{:?}", some_number);
-    let some_char = Some('e');
-    println!("{:?}", some_char);
-    let none_number: Option<i32> = None;
-    println!("{:?}", none_number);
+    for it in [Coin::Penny, Coin::Nickel, Coin::Dime, Coin::Quarter] {
+        let value = value_in_cents(&it);
+        println!("coin: {:?} -> value: {}", it, value);
+    }
+}
+
+#[derive(Debug)]
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
+}
+
+fn value_in_cents(coin: &Coin) -> u8 {
+    match coin {
+        Coin::Penny => 1,
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter => 25,
+    }
 }
