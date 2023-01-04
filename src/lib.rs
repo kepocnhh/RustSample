@@ -1,10 +1,10 @@
 mod front_of_house {
-    mod hosting {
-        fn add_to_waitlist() {
+    pub mod hosting {
+        pub fn add_to_waitlist() {
             println!("hosting: add to waitlist")
         }
 
-        fn seat_at_table() {
+        pub fn seat_at_table() {
             println!("hosting: seat at table")
         }
     }
@@ -22,4 +22,12 @@ mod front_of_house {
             println!("serving: take payment")
         }
     }
+}
+
+pub fn eat_at_restaurant() {
+    // Absolute path
+    crate::front_of_house::hosting::add_to_waitlist();
+
+    // Relative path
+    front_of_house::hosting::seat_at_table();
 }
