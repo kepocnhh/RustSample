@@ -1,25 +1,8 @@
 fn main() {
-    let item = Message::Quit;
-    item.println();
-    let item = Message::Move { x: 1, y: 2 };
-    item.println();
-    let item = Message::Write(String::from("foo"));
-    item.println();
-    let item = Message::ChangeColor(1, 2, 3);
-    item.println();
-    Message::Quit.println();
-}
-
-#[derive(Debug)]
-enum Message {
-    Quit,
-    Move { x: i32, y: i32 },
-    Write(String),
-    ChangeColor(i32, i32, i32),
-}
-
-impl Message {
-    fn println(&self) {
-        println!("{:?}", self)
-    }
+    let some_number = Some(5);
+    println!("{:?}", some_number);
+    let some_char = Some('e');
+    println!("{:?}", some_char);
+    let none_number: Option<i32> = None;
+    println!("{:?}", none_number);
 }
