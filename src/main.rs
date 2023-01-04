@@ -1,13 +1,13 @@
 fn main() {
     let item = Message::Quit;
-    println(item);
+    item.println();
     let item = Message::Move { x: 1, y: 2 };
-    println(item);
+    item.println();
     let item = Message::Write(String::from("foo"));
-    println(item);
+    item.println();
     let item = Message::ChangeColor(1, 2, 3);
-    println(item);
-    println(Message::Quit);
+    item.println();
+    Message::Quit.println();
 }
 
 #[derive(Debug)]
@@ -18,6 +18,8 @@ enum Message {
     ChangeColor(i32, i32, i32),
 }
 
-fn println(item: Message) {
-    println!("{:?}", item)
+impl Message {
+    fn println(&self) {
+        println!("{:?}", self)
+    }
 }
