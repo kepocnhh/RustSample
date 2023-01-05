@@ -1,5 +1,5 @@
 mod book;
 
 pub fn run() {
-    book::ch0801::new_vec();
+    book::ch0801::run();
 }

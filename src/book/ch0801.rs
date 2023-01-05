@@ -1,4 +1,10 @@
-pub fn new_vec() {
+pub fn run() {
+    new_vec();
+    get_item();
+}
+
+fn new_vec() {
+    println!("\nCreating a New Vector");
     let v: Vec<i32> = Vec::new();
     println!("vector: {:?}", v);
     let v = vec![1, 2, 3];
@@ -24,5 +30,25 @@ trait ArrayExt<T : Copy> {
 impl<T : Copy> ArrayExt<T> for [T] {
     fn to_vec(&self) -> Vec<T> {
         vec_of(self)
+    }
+}
+
+fn get_item() {
+    println!("\nReading Elements of Vectors");
+    let vector = vec![1, 2, 3, 4, 5];
+    let index = 2;
+    let item: i32 = vector[index];
+    println!("The [{index}] element is {item}");
+    let item: Option<&i32> = vector.get(index);
+    match item {
+        Some(item) => println!("The [{index}] element is {item}"),
+        None => println!("There is no [{index}] element."),
+    }
+    let index = 42;
+    // let item: i32 = vector[index];
+    // println!("The [{index}] element is {item}");
+    match vector.get(index) {
+        Some(item) => println!("The [{index}] element is {item}"),
+        None => println!("There is no [{index}] element."),
     }
 }
