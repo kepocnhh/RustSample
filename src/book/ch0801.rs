@@ -35,6 +35,10 @@ impl<T : Copy> ArrayExt<T> for [T] {
 
 fn get_item() {
     println!("\nReading Elements of Vectors");
+    // let mut vector = vec![1, 2, 3, 4, 5];
+    // let item = &vector[0];
+    // vector.push(1); // error
+    // println!("item: {item}");
     let vector = vec![1, 2, 3, 4, 5];
     let index = 2;
     let item: i32 = vector[index];
