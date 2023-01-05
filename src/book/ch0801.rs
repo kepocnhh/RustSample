@@ -1,6 +1,7 @@
 pub fn run() {
     new_vec();
     get_item();
+    iterating_vec();
 }
 
 fn new_vec() {
@@ -55,4 +56,31 @@ fn get_item() {
         Some(item) => println!("The [{index}] element is {item}"),
         None => println!("There is no [{index}] element."),
     }
+}
+
+fn iterating_vec() {
+    println!("\nIterating over the Values in a Vector");
+
+    let v = vec![100, 32, 57];
+    for (index, item) in v.iter().enumerate() {
+        println!("{index}] {item}");
+    }
+
+    // let mut v = v;
+    let value = 42;
+    for i in &mut v.clone() {
+        let old = *i;
+        *i += value;
+        println!("{old} + {value} = {i}");
+    }
+
+    let mut v = v;
+    println!("vector: {:?}", v);
+    let value = 42;
+    for i in &mut v {
+        let old = *i;
+        *i += value;
+        println!("{old} + {value} = {i}");
+    }
+    println!("vector: {:?}", v);
 }
