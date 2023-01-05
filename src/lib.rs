@@ -1,6 +1,5 @@
-use rand::Rng;
+mod book;
 
 pub fn run() {
-    let secret_number = rand::thread_rng().gen_range(1..=100);
-    println!("secret number: {secret_number}")
+    book::ch0801::new_vec();
 }
