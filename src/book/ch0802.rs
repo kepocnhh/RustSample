@@ -7,6 +7,7 @@ pub fn run() {
     new_string();
     concatenation();
     indexing();
+    iterating();
 }
 
 fn new_string() {
@@ -44,7 +45,22 @@ fn indexing() {
     println!("\nIndexing into Strings");
 
     let s = "Здравствуйте";
+    // let s = "नमस्ते";
     let value = 4;
     println!("string \"{s}\" -> 0..{value} = \"{}\"", &s[..value]);
     // println!("string: {}", &s[0..1]); // error
+}
+
+fn iterating() {
+    println!("\nIterating Over Strings");
+
+    let s = "Здравствуйте";
+    println!("chars: \"{s}\"");
+    for (index, c) in s.chars().enumerate() {
+        println!("{:02}] '{c}'", index);
+    }
+    println!("bytes: \"{s}\"");
+    for (index, b) in s.bytes().enumerate() {
+        println!("{:02}] '{b}'", index);
+    }
 }
