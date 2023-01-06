@@ -6,7 +6,8 @@ pub fn run() {
     const TITLE: &str = "Storing Keys with Associated Values in Hash Maps";
     println!("\n\t{:02}/{:02}\t\"{TITLE}\"", CHAPTER, PART);
 
-    creating()
+    creating();
+    ownership();
 }
 
 fn creating() {
@@ -26,4 +27,19 @@ fn creating() {
     for (key, value) in scores {
         println!("{key}: {value}");
     }
+}
+
+fn ownership() {
+    println!("\nHash Maps and Ownership");
+
+    let mut map = HashMap::new();
+    let key = "foo";
+    map.insert(key, 1);
+    println!("{:?}", map);
+    map.insert(key, 2);
+    println!("{:?}", map);
+    map.entry(key).or_insert(3);
+    println!("{:?}", map);
+    map.entry("bar").or_insert_with(|| 4);
+    println!("{:?}", map);
 }
