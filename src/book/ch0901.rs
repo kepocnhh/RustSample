@@ -4,5 +4,16 @@ pub fn run() {
     const TITLE: &str = "Unrecoverable Errors with panic!";
     println!("\n\t{:02}/{:02}\t\"{TITLE}\"", CHAPTER, PART);
 
-    todo!()
+    panic();
+    read_vec();
+}
+
+fn panic() {
+    println!("panic!(\"crash and burn\")");
+    // panic!("crash and burn");
+}
+
+fn read_vec() {
+    println!("index out of bounds: the len is 3 but the index is 99");
+    // vec![1, 2, 3][99];
 }
