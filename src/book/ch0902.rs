@@ -9,6 +9,7 @@ pub fn run() {
 
     open_file();
     matching_errors();
+    unwrap_and_expect();
 }
 
 fn open_file() {
@@ -33,4 +34,24 @@ fn matching_errors() {
             _ => println!("open file \"{name}\" error: {:?}", error)
         }
     };
+}
+
+fn unwrap_and_expect() {
+    println!("\nShortcuts for Panic on Error: unwrap and expect");
+
+    let name = "foo.txt";
+    match File::open(name) {
+        Ok(file) => println!("open file: {:?}", file),
+        Err(error) => match error.kind() {
+            ErrorKind::NotFound => match File::create(name) {
+                Ok(file) => println!("create file: {:?}", file),
+                Err(error) => panic!("create file \"{name}\" error: {:?}", error)
+            },
+            _ => panic!("open file \"{name}\" error: {:?}", error)
+        }
+    };
+    let file = File::open(name).unwrap();
+    println!("Unwrap: {:?}", file);
+    let file = File::open(name).expect("foo.txt should be included in this project");
+    println!("Expect: {:?}", file);
 }
