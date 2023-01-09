@@ -12,6 +12,7 @@ pub fn run() {
     matching_errors();
     unwrap_and_expect();
     propagating_errors();
+    shortcut_for_propagating();
 }
 
 fn open_file() {
@@ -73,4 +74,24 @@ fn ok_or_error() -> Result<String, Error> {
         Ok(_) => Ok(name.to_string()),
         Err(error) => Err(error)
     };
+}
+
+fn shortcut_for_propagating() {
+    println!("\nA Shortcut for Propagating");
+
+    match ok_or_error_shortcut() {
+        Ok(it) => println!("ok: {:?}", it),
+        Err(error) => println!("error: {:?}", error)
+    }
+}
+
+fn ok_or_error_shortcut() -> Result<String, Error> {
+    let name = "foo.txt";
+    // let file = File::open(name)?;
+    // let metadata = file.metadata()?;
+    // return Ok(format!("is_file: {}", metadata.is_file()));
+    let is_file = File::open(name)
+        ?.metadata()
+        ?.is_file();
+    return Ok(format!("is_file: {}", is_file));
 }
