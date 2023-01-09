@@ -1,4 +1,5 @@
 use std::fs::File;
+use std::io::Error;
 use std::io::ErrorKind;
 
 pub fn run() {
@@ -10,6 +11,7 @@ pub fn run() {
     open_file();
     matching_errors();
     unwrap_and_expect();
+    propagating_errors();
 }
 
 fn open_file() {
@@ -54,4 +56,21 @@ fn unwrap_and_expect() {
     println!("Unwrap: {:?}", file);
     let file = File::open(name).expect("foo.txt should be included in this project");
     println!("Expect: {:?}", file);
+}
+
+fn propagating_errors() {
+    println!("\nPropagating Errors");
+
+    match ok_or_error() {
+        Ok(it) => println!("ok: {:?}", it),
+        Err(error) => println!("error: {:?}", error)
+    }
+}
+
+fn ok_or_error() -> Result<String, Error> {
+    let name = "foo.txt";
+    return match File::open(name) {
+        Ok(_) => Ok(name.to_string()),
+        Err(error) => Err(error)
+    };
 }
