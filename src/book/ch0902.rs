@@ -13,6 +13,7 @@ pub fn run() {
     unwrap_and_expect();
     propagating_errors();
     shortcut_for_propagating();
+    read_to_string();
 }
 
 fn open_file() {
@@ -94,4 +95,18 @@ fn ok_or_error_shortcut() -> Result<String, Error> {
         ?.metadata()
         ?.is_file();
     return Ok(format!("is_file: {}", is_file));
+}
+
+fn read_to_string() {
+    println!("\nstd::fs::read_to_string");
+
+    let name = "foo.txt";
+    let value = "foobar";
+    match std::fs::write(name, value) {
+        Ok(_) => match std::fs::read_to_string(name) {
+            Ok(it) => assert_eq!(value, it),
+            Err(error) => println!("read error: {:?}", error)
+        }
+        Err(error) => println!("write error: {:?}", error)
+    }
 }
