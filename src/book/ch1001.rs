@@ -6,6 +6,7 @@ pub fn run() {
 
     in_function_definitions();
     in_struct_definitions();
+    in_method_definitions();
 }
 
 fn in_function_definitions() {
@@ -40,4 +41,18 @@ fn in_struct_definitions() {
 struct Point<T> {
     x: T,
     y: T,
+}
+
+fn in_method_definitions() {
+    println!("\nIn Method Definitions");
+
+    let point = Point { x: 1.0_f32, y: 4.0_f32 };
+    let distance_from_origin = point.distance_from_origin();
+    println!("distance from origin: {distance_from_origin}");
+}
+
+impl Point<f32> {
+    fn distance_from_origin(&self) -> f32 {
+        (self.x.powi(2) + self.y.powi(2)).sqrt()
+    }
 }
