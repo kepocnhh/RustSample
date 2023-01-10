@@ -5,6 +5,7 @@ pub fn run() {
     println!("\n\t{:02}/{:02}\t\"{TITLE}\"", CHAPTER, PART);
 
     in_function_definitions();
+    in_struct_definitions();
 }
 
 fn in_function_definitions() {
@@ -23,4 +24,20 @@ fn largest<T: PartialOrd>(list: &[T]) -> &T {
         }
     }
     largest
+}
+
+fn in_struct_definitions() {
+    println!("\nIn Struct Definitions");
+
+    let point = Point { x: 5, y: 10 };
+    println!("{:?}", point);
+    let point = Point { x: 1.0, y: 4.0 };
+    println!("{:?}", point);
+    println!("Point(x:{}, y:{})", point.x, point.y);
+}
+
+#[derive(Debug)]
+struct Point<T> {
+    x: T,
+    y: T,
 }
