@@ -8,6 +8,7 @@ pub fn run() {
 
     defining_a_trait();
     traits_as_parameters();
+    trait_bound_syntax();
 }
 
 fn defining_a_trait() {
@@ -48,4 +49,31 @@ fn traits_as_parameters() {
 
 fn notify(item: &impl Summary) {
     println!("Breaking news! {}", item.summarize());
+}
+
+fn trait_bound_syntax() {
+    println!("\nTrait Bound Syntax");
+
+    let foo = Foo { value: "bar".to_string() };
+    let bar = Bar { value: 42 };
+    println_0(&foo, &bar);
+    println_1(&foo, &foo);
+}
+
+struct Bar {
+    value: u8,
+}
+
+impl Summary for Bar {
+    fn summarize(&self) -> String {
+        format!("value: {}", self.value)
+    }
+}
+
+fn println_0(s1: &impl Summary, s2: &impl Summary) {
+    println!("0: {}\n1: {}", s1.summarize(), s2.summarize());
+}
+
+fn println_1<T: Summary>(s1: &T, s2: &T) {
+    println!("0: {}\n1: {}", s1.summarize(), s2.summarize());
 }
