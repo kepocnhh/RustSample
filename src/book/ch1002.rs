@@ -7,6 +7,7 @@ pub fn run() {
     println!("\n\t{:02}/{:02}\t\"{TITLE}\"", CHAPTER, PART);
 
     defining_a_trait();
+    traits_as_parameters();
 }
 
 fn defining_a_trait() {
@@ -35,4 +36,16 @@ impl Display for Foo {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         write!(f, "Foo({})", self.value)
     }
+}
+
+fn traits_as_parameters() {
+    println!("\nTraits as Parameters");
+
+    let foo = Foo { value: "bar".to_string() };
+    notify(&foo);
+    // notify(&"foo".to_string()); // error
+}
+
+fn notify(item: &impl Summary) {
+    println!("Breaking news! {}", item.summarize());
 }
