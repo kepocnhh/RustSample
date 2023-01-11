@@ -12,5 +12,6 @@ pub fn run() {
     ch0803::run();
     ch0901::run();
     ch0902::run();
+    ch1001::run();
     ch1002::run();
 }
