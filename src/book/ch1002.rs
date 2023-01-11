@@ -1,4 +1,4 @@
-use std::fmt::{Display, Formatter};
+use std::fmt::{Debug, Display, Formatter};
 
 pub fn run() {
     const CHAPTER: u8 = 10;
@@ -9,6 +9,7 @@ pub fn run() {
     defining_a_trait();
     traits_as_parameters();
     trait_bound_syntax();
+    multiple_trait();
 }
 
 fn defining_a_trait() {
@@ -76,4 +77,29 @@ fn println_0(s1: &impl Summary, s2: &impl Summary) {
 
 fn println_1<T: Summary>(s1: &T, s2: &T) {
     println!("0: {}\n1: {}", s1.summarize(), s2.summarize());
+}
+
+fn multiple_trait() {
+    println!("\nSpecifying Multiple Trait Bounds with the + Syntax");
+
+    let foo = Foo { value: "bar".to_string() };
+    display_0(&foo);
+    // display(&Bar { value: 42 }); // error
+    display_1(&foo);
+    multiple_trait_0(&foo, &"foo".to_string());
+}
+
+fn display_0(item: &(impl Summary + Display)) {
+    println!("Breaking news! {}", item.summarize());
+}
+
+fn display_1<T: Summary + Display>(item: &T) {
+    println!("Breaking news! {}", item.summarize());
+}
+
+fn multiple_trait_0<T, U>(t: &T, u: &U)
+    where
+        T: Display,
+        U: Debug {
+    println!("display: {}\ndebug: {:?}", t, u);
 }
