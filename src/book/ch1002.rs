@@ -10,6 +10,7 @@ pub fn run() {
     traits_as_parameters();
     trait_bound_syntax();
     multiple_trait();
+    returning_traits();
 }
 
 fn defining_a_trait() {
@@ -102,4 +103,15 @@ fn multiple_trait_0<T, U>(t: &T, u: &U)
         T: Display,
         U: Debug {
     println!("display: {}\ndebug: {:?}", t, u);
+}
+
+fn returning_traits() {
+    println!("\nReturning Types that Implement Traits");
+
+    let summary = returning_traits_0();
+    println!("returning summary: {}", summary.summarize())
+}
+
+fn returning_traits_0() -> impl Summary {
+    Foo { value: "foo".to_string() }
 }
