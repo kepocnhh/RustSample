@@ -33,3 +33,10 @@ impl U8Ex for u8 {
         self > &other
     }
 }
+
+pub fn panic_if_one(value: u8) {
+    if value == 1 {
+        panic!("Value is one!");
+    }
+    println!("Value is not one. OK.");
+}

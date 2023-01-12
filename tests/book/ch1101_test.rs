@@ -1,5 +1,5 @@
 use rust_sample::book::ch1101;
-use rust_sample::book::ch1101::U8Ex;
+use rust_sample::book::ch1101::{panic_if_one, U8Ex};
 
 #[test]
 pub fn max_test() {
@@ -36,4 +36,17 @@ pub fn is_greater_than_test() {
             "\"b\" is greater than \"a\"!"
         )
     }
+}
+
+#[test]
+pub fn panic_if_one_test_no_panic() {
+    for it in [42, 255] {
+        panic_if_one(it);
+    }
+}
+
+#[test]
+#[should_panic(expected = "Value is one!")]
+pub fn panic_if_one_test() {
+    panic_if_one(1);
 }
