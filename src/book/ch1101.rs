@@ -4,5 +4,32 @@ pub fn run() {
     const TITLE: &str = "How to Write Tests";
     println!("\n\t{:02}/{:02}\t\"{TITLE}\"", CHAPTER, PART);
 
-    todo!()
+    print_max();
+}
+
+fn print_max() {
+    println!("\nThe Anatomy of a Test Function");
+
+    let a = 1;
+    let b = 2;
+    let max = max(a, b);
+    println!("max: {max}");
+}
+
+pub fn max(a: u8, b: u8) -> u8 {
+    if a < b {
+        b
+    } else {
+        a
+    }
+}
+
+pub trait U8Ex {
+    fn is_greater_than(&self, other: u8) -> bool;
+}
+
+impl U8Ex for u8 {
+    fn is_greater_than(&self, other: u8) -> bool {
+        self > &other
+    }
 }
