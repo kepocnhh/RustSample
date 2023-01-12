@@ -40,3 +40,10 @@ pub fn panic_if_one(value: u8) {
     }
     println!("Value is not one. OK.");
 }
+
+pub fn error_if_one(value: u8) -> Result<(), String> {
+    if value == 1 {
+        return Err("Value is one!".to_owned());
+    }
+    return Ok(());
+}
