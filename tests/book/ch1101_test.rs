@@ -24,10 +24,16 @@ pub fn max_test() {
 pub fn is_greater_than_test() {
     for it in [(1, 2), (1, 42), (1, 255)] {
         let (a, b) = it;
-        assert!(!a.is_greater_than(b))
+        assert!(
+            !a.is_greater_than(b),
+            "\"a\" is greater than \"b\"!"
+        )
     }
     for it in [(2, 1), (42, 1), (255, 1)] {
         let (a, b) = it;
-        assert!(a.is_greater_than(b))
+        assert!(
+            a.is_greater_than(b),
+            "\"b\" is greater than \"a\"!"
+        )
     }
 }
