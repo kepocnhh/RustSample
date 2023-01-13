@@ -15,9 +15,9 @@ fn test_help() {
         "cargo test {test_name_prefix}",
         "cargo test -- --ignored", // only ignored
         "cargo test -- --include-ignored", // with ignored
+        "cargo test --test {module_name}"
     ];
     for (index, it) in commands.iter().enumerate() {
         println!("{index}] {it}")
     }
 }
-
