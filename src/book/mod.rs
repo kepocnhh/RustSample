@@ -9,6 +9,10 @@ pub mod ch1003;
 pub mod ch1101;
 pub mod ch1102;
 
+pub mod ch1103;
+#[cfg(test)]
+mod ch1103_integration_tests;
+
 pub fn run() {
     ch0801::run();
     ch0802::run();
@@ -20,4 +24,5 @@ pub fn run() {
     ch1003::run();
     ch1101::run();
     ch1102::run();
+    ch1103::run();
 }
