@@ -8,6 +8,7 @@ pub mod ch1002;
 pub mod ch1003;
 pub mod ch1101;
 pub mod ch1102;
+pub mod ch1103;
 
 pub fn run() {
     ch0801::run();
@@ -20,4 +21,5 @@ pub fn run() {
     ch1003::run();
     ch1101::run();
     ch1102::run();
+    ch1103::run();
 }
