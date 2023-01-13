@@ -13,6 +13,7 @@ fn test_help() {
         "cargo test -- --show-output",
         "cargo test {test_name}",
         "cargo test {test_name_prefix}",
+        "cargo test -- --ignored",
     ];
     for (index, it) in commands.iter().enumerate() {
         println!("{index}] {it}")
