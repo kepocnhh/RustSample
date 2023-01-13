@@ -9,7 +9,8 @@ pub fn run() {
 
 fn test_help() {
     let commands = [
-        "cargo test -- --test-threads=1"
+        "cargo test -- --test-threads=1",
+        "cargo test -- --show-output",
     ];
     for (index, it) in commands.iter().enumerate() {
         println!("{index}] {it}")
