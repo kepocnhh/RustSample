@@ -11,6 +11,8 @@ fn test_help() {
     let commands = [
         "cargo test -- --test-threads=1",
         "cargo test -- --show-output",
+        "cargo test {test_name}",
+        "cargo test {test_name_prefix}",
     ];
     for (index, it) in commands.iter().enumerate() {
         println!("{index}] {it}")
