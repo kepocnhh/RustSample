@@ -9,6 +9,7 @@ pub fn run() {
 
     closure_type_inference_and_annotation();
     capturing_references_or_moving_ownership();
+    moving_captured_values_out();
     todo!();
 }
 
@@ -72,4 +73,22 @@ fn capturing_references_or_moving_ownership() {
         }).unwrap()
         .join()
         .unwrap();
+}
+
+fn moving_captured_values_out() {
+    println!("\nMoving Captured Values Out of Closures and the Fn Traits");
+
+    let list = vec!["foo", "bar"];
+    println!("First of {:?} is {}", list, get_first_or_else(&list, || &"baz"));
+
+    let list = vec!["foo", "bar", "42"];
+    let mut mutable_list = list.clone();
+    println!("unsorted: {:?}", list);
+    mutable_list.sort_by_key(|it| it.chars().nth(0).unwrap());
+    println!("sorted: {:?}", mutable_list);
+}
+
+
+fn get_first_or_else<'a, T, F: FnOnce() -> &'a T>(list: &'a Vec<T>, f: F) -> &'a T {
+    return list.get(0).unwrap_or_else(f);
 }
