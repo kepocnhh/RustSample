@@ -1,0 +1,27 @@
+Изучаю `Rust` по [книге](https://doc.rust-lang.ru/book/).
+
+[![en](https://img.shields.io/badge/lang-en-blue.svg)](https://github.com/kepocnhh/RustSample/blob/wip/README.md)
+
+[rust-lang.ru](https://rust-lang.ru/)
+
+- [x] [#1](https://doc.rust-lang.ru/book/ch01-00-getting-started.html)
+- [x] [#2](https://doc.rust-lang.ru/book/ch02-00-guessing-game-tutorial.html)
+- [x] [#3](https://doc.rust-lang.ru/book/ch03-00-common-programming-concepts.html)
+- [x] [#4](https://doc.rust-lang.ru/book/ch04-00-understanding-ownership.html)
+- [x] [#5](https://doc.rust-lang.ru/book/ch05-00-structs.html)
+- [x] [#6](https://doc.rust-lang.ru/book/ch06-00-enums.html)
+- [x] [#7](https://doc.rust-lang.ru/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html)
+- [x] [#8](https://doc.rust-lang.ru/book/ch08-00-common-collections.html)
+- [x] [#9](https://doc.rust-lang.ru/book/ch09-00-error-handling.html)
+- [x] [#10](https://doc.rust-lang.ru/book/ch10-00-generics.html)
+- [x] [#11](https://doc.rust-lang.ru/book/ch11-00-testing.html)
+- [ ] [#12](https://doc.rust-lang.ru/book/ch12-00-an-io-project.html)
+- [ ] [#13](https://doc.rust-lang.ru/book/ch13-00-functional-features.html)
+- [ ] [#14](https://doc.rust-lang.ru/book/ch14-00-more-about-cargo.html)
+- [ ] [#15](https://doc.rust-lang.ru/book/ch15-00-smart-pointers.html)
+- [ ] [#16](https://doc.rust-lang.ru/book/ch16-00-concurrency.html)
+- [ ] [#17](https://doc.rust-lang.ru/book/ch17-00-oop.html)
+- [ ] [#18](https://doc.rust-lang.ru/book/ch18-00-patterns.html)
+- [ ] [#19](https://doc.rust-lang.ru/book/ch19-00-advanced-features.html)
+- [ ] [#20](https://doc.rust-lang.ru/book/ch20-00-final-project-a-web-server.html)
+- [ ] [#21](https://doc.rust-lang.ru/book/appendix-00.html)
