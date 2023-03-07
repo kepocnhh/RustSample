@@ -8,6 +8,7 @@ pub fn run() {
     println!("\n\t{:02}/{:02}\t\"{TITLE}\"", CHAPTER, PART);
 
     closure_type_inference_and_annotation();
+    capturing_references_or_moving_ownership();
     todo!();
 }
 
@@ -37,4 +38,38 @@ fn closure_type_inference_and_annotation() {
     let result = example_closure(String::from("hello"));
     // let n = example_closure(5); // expected struct `String`, found integer
     println!("Example closure. Result: {}", result);
+}
+
+fn capturing_references_or_moving_ownership() {
+    println!("\nCapturing References or Moving Ownership");
+
+    let mut list = vec![1, 2, 3];
+    let immutable_list = list.clone();
+
+    println!("Before defining closure: {:?}", list);
+
+    let only_borrows = || println!("From closure: {:?}", immutable_list);
+    only_borrows();
+
+    let mut borrows_mutably = || list.push(7);
+    borrows_mutably();
+
+    println!("After calling closure mutable: {:?}", list);
+    println!("After calling closure: {:?}", immutable_list);
+
+    println!("Before defining closure: {:?}", list);
+
+    let handle = thread::current();
+    let name = handle.name().expect("Get thread name error!");
+    println!("thread: {name}");
+    thread::Builder::new()
+        .name("foo thread".into())
+        .spawn(move || {
+            let handle = thread::current();
+            let name = handle.name().expect("Get thread name error!");
+            println!("thread: {name}");
+            println!("From thread: {:?}", list)
+        }).unwrap()
+        .join()
+        .unwrap();
 }
