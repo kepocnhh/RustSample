@@ -10,7 +10,6 @@ pub fn run() {
     closure_type_inference_and_annotation();
     capturing_references_or_moving_ownership();
     moving_captured_values_out();
-    todo!();
 }
 
 fn closure_type_inference_and_annotation() {
