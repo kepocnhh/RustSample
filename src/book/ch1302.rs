@@ -6,7 +6,7 @@ pub fn run() {
 
     _130201();
     _130202();
-    todo!();
+    _130203();
 }
 
 fn _130201() {
@@ -52,6 +52,16 @@ fn _130202() {
 
     let list: Vec<_> = list.iter().map(|x| x + 1).collect();
     println!("mapped: {list:?}");
+}
+
+fn _130203() {
+    println!("\nUsing Closures that Capture Their Environment");
+
+    let list = vec![1, 2, 3, 4, 42];
+    let a = 2;
+    let b = 0;
+    let list: Vec<_> = list.iter().filter(|it| *it % a == b).collect();
+    println!("filtered: {list:?}");
 }
 
 fn type_name<T>(_: T) -> &'static str {
