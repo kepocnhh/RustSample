@@ -16,7 +16,7 @@
 - [x] [#10](https://doc.rust-lang.ru/book/ch10-00-generics.html)
 - [x] [#11](https://doc.rust-lang.ru/book/ch11-00-testing.html)
 - [ ] [#12](https://doc.rust-lang.ru/book/ch12-00-an-io-project.html)
-- [ ] [#13](https://doc.rust-lang.ru/book/ch13-00-functional-features.html)
+- [x] [#13](https://doc.rust-lang.ru/book/ch13-00-functional-features.html)
 - [ ] [#14](https://doc.rust-lang.ru/book/ch14-00-more-about-cargo.html)
 - [ ] [#15](https://doc.rust-lang.ru/book/ch15-00-smart-pointers.html)
 - [ ] [#16](https://doc.rust-lang.ru/book/ch16-00-concurrency.html)
