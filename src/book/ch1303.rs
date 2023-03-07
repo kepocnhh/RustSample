@@ -5,7 +5,7 @@ pub fn run() {
     println!("\n\t{:02}/{:02}\t\"{TITLE}\"", CHAPTER, PART);
 
     _130301();
-    todo!();
+    _130302();
 }
 
 fn _130301() {
@@ -17,7 +17,20 @@ fn _130301() {
     println!("iterable: {result:?}");
     let result = iterable(&["256".to_owned()]);
     println!("iterable: {result:?}");
-    todo!();
+}
+
+fn _130302() {
+    println!("\nMaking Code Clearer with Iterator Adaptors");
+
+    let contents = "\
+1: foo
+2: bar
+3: baz
+";
+    let result = fored("ba", contents);
+    println!("fored: {result:?}");
+    let result = iterable2("ba", contents);
+    println!("iterable: {result:?}");
 }
 
 fn cloned(args: &[String]) -> Result<String, String> {
@@ -34,4 +47,21 @@ fn iterable(args: &[String]) -> Result<String, String> {
     let foo = iter.next().ok_or("not enough arguments")?;
     let bar = iter.next().ok_or("not enough arguments")?;
     return Ok(format!("foo: {foo}\nbar: {bar}"));
+}
+
+fn fored<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    let mut results = Vec::new();
+    for line in contents.lines() {
+        if line.contains(query) {
+            results.push(line);
+        }
+    }
+    return results;
+}
+
+fn iterable2<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    contents
+        .lines()
+        .filter(|line| line.contains(query))
+        .collect()
 }
