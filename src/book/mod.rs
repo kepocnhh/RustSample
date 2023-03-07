@@ -8,6 +8,7 @@ pub mod ch1002;
 pub mod ch1003;
 pub mod ch1101;
 pub mod ch1102;
+pub mod ch1301;
 
 pub mod ch1103;
 #[cfg(test)]
@@ -25,4 +26,5 @@ pub fn run() {
     ch1101::run();
     ch1102::run();
     ch1103::run();
+    ch1301::run();
 }
