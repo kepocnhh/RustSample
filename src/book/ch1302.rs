@@ -5,6 +5,7 @@ pub fn run() {
     println!("\n\t{:02}/{:02}\t\"{TITLE}\"", CHAPTER, PART);
 
     _130201();
+    _130202();
     todo!();
 }
 
@@ -41,8 +42,20 @@ fn _130201() {
     }
 }
 
+fn _130202() {
+    println!("\nMethods that Consume the Iterator");
+
+    let list = vec![1, 2, 3];
+    let list_iter = list.iter();
+    let total: i32 = list_iter.sum();
+    println!("sum of {list:?} is {total}");
+
+    let list: Vec<_> = list.iter().map(|x| x + 1).collect();
+    println!("mapped: {list:?}");
+}
+
 fn type_name<T>(_: T) -> &'static str {
-    return std::any::type_name::<T>()
+    return std::any::type_name::<T>();
 }
 
 trait Foo {
@@ -60,7 +73,7 @@ impl Foo for u8 {
 
     fn next(&mut self) -> Option<Self::Bar> {
         if self == &u8::MAX {
-            return None
+            return None;
         }
         *self += 1;
         return Some(*self);
@@ -70,7 +83,7 @@ impl Foo for u8 {
 impl Foo42<u8> for u8 {
     fn next42(&mut self) -> Option<u8> {
         if self == &u8::MAX {
-            return None
+            return None;
         }
         *self += 1;
         return Some(*self);
