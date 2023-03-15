@@ -1,4 +1,4 @@
-use std::ops::Deref;
+use std::ops::{Deref, DerefMut};
 
 pub fn run() {
     const CHAPTER: u8 = 15;
@@ -9,7 +9,7 @@ pub fn run() {
     _150201();
     _150202();
     _150203();
-    todo!();
+    _150204();
 }
 
 fn _150201() {
@@ -54,5 +54,33 @@ fn _150203() {
     let foo: MyBox<String> = MyBox(value);
     let reference: &str = &foo;
     assert_eq!(text, reference);
+    println!("text: {text}, reference: {reference}");
+}
+
+struct MutableBox<T>(T);
+
+impl<T> Deref for MutableBox<T> {
+    type Target = T;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+impl<T> DerefMut for MutableBox<T> {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+
+fn _150204() {
+    println!("\nHow Deref Coercion Interacts with Mutability");
+
+    let text: &str = "Rust";
+    let value: String = String::from(text);
+    let mut foo: MutableBox<String> = MutableBox(value);
+    foo.push_str("42");
+    let reference: &str = &foo;
+    assert_ne!(text, reference);
     println!("text: {text}, reference: {reference}");
 }
