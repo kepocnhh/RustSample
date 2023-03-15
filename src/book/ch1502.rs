@@ -8,6 +8,7 @@ pub fn run() {
 
     _150201();
     _150202();
+    _150203();
     todo!();
 }
 
@@ -43,4 +44,15 @@ fn _150202() {
     assert_eq!(5, value);
     assert_eq!(value, *foo);
     println!("value: {value}, MyBox<i32>: {}", *foo);
+}
+
+fn _150203() {
+    println!("\nImplicit Deref Coercions with Functions and Methods");
+
+    let text: &str = "Rust";
+    let value: String = String::from(text);
+    let foo: MyBox<String> = MyBox(value);
+    let reference: &str = &foo;
+    assert_eq!(text, reference);
+    println!("text: {text}, reference: {reference}");
 }
