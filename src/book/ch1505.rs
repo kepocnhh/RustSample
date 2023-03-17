@@ -8,6 +8,7 @@ pub fn run() {
     println!("\n\t{CHAPTER:02}/{PART:02}\t\"{TITLE}\"");
 
     _150501();
+    _150502();
     todo!();
 }
 
@@ -52,4 +53,12 @@ fn _150501() {
     let actual = foo.msgs.borrow()[0].clone();
     assert_eq!(actual, expected);
     println!("Expected is \"{expected}\", actual is \"{actual}\".");
+}
+
+fn _150502() {
+    println!("\nKeeping Track of Borrows at Runtime with RefCell<T>");
+
+    let foo = MockFoo { msgs: RefCell::new(vec![]) };
+    let a1 = foo.msgs.borrow_mut();
+    // let a2 = foo.msgs.borrow_mut(); // already borrowed: BorrowMutError
 }
