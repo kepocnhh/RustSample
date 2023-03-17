@@ -15,7 +15,6 @@ fn _150101() {
     println!("value: {value}");
 }
 
-
 #[derive(Debug)]
 enum Ints {
     Cons { value: i32, next: Box<Ints> },
