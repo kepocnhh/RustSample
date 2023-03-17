@@ -5,7 +5,7 @@ pub fn run() {
     println!("\n\t{CHAPTER:02}/{PART:02}\t\"{TITLE}\"");
 
     _150301();
-    todo!();
+    _150302();
 }
 
 struct MyDrop(String);
@@ -21,6 +21,17 @@ fn _150301() {
 
     let a = MyDrop(String::from("foo"));
     println!("Allocated a: {}", a.0);
+    let b = MyDrop(String::from("bar"));
+    println!("Allocated b: {}", b.0);
+    println!("finish...");
+}
+
+fn _150302() {
+    println!("\nDropping a Value Early with std::mem::drop");
+
+    let a = MyDrop(String::from("foo"));
+    println!("Allocated a: {}", a.0);
+    drop(a);
     let b = MyDrop(String::from("bar"));
     println!("Allocated b: {}", b.0);
     println!("finish...");
