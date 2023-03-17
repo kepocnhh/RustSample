@@ -1,5 +1,5 @@
 use std::cell::RefCell;
-use std::fmt::format;
+use std::rc::Rc;
 
 pub fn run() {
     const CHAPTER: u8 = 15;
@@ -9,7 +9,7 @@ pub fn run() {
 
     _150501();
     _150502();
-    todo!();
+    _150503();
 }
 
 trait Foo {
@@ -61,4 +61,31 @@ fn _150502() {
     let foo = MockFoo { msgs: RefCell::new(vec![]) };
     let a1 = foo.msgs.borrow_mut();
     // let a2 = foo.msgs.borrow_mut(); // already borrowed: BorrowMutError
+}
+
+#[derive(Debug)]
+enum RCInts {
+    Cons { value: Rc<RefCell<i32>>, next: Box<RCInts> },
+    Nil,
+}
+
+fn _150503() {
+    println!("\nHaving Multiple Owners of Mutable Data by Combining Rc<T> and RefCell<T>");
+
+    let value = Rc::new(RefCell::new(42));
+    let a = RCInts::Cons {
+        value: Rc::clone(&value),
+        next: Box::new(RCInts::Nil)
+    };
+    let b = RCInts::Cons {
+        value: Rc::clone(&value),
+        next: Box::new(RCInts::Nil)
+    };
+    let c = RCInts::Cons {
+        value: Rc::clone(&value),
+        next: Box::new(RCInts::Nil)
+    };
+    println!("before: a = {a:?}, b = {b:?}, c = {c:?}");
+    *value.borrow_mut() += 1;
+    println!("after: a = {a:?}, b = {b:?}, c = {c:?}");
 }
