@@ -7,7 +7,7 @@ pub fn run() {
     println!("\n\t{CHAPTER:02}/{PART:02}\t\"{TITLE}\"");
 
     _150401();
-    todo!();
+    _150402();
 }
 
 #[derive(Debug)]
@@ -60,4 +60,33 @@ fn _150401() {
     println!("a: {rc:?}");
     println!("b: {b:?}");
     println!("c: {c:?}");
+}
+
+fn _150402() {
+    println!("\nCloning an Rc<T> Increases the Reference Count");
+
+    let a = RcInts::Cons {
+        value: 1,
+        next: Rc::new(
+            RcInts::Cons {
+                value: 2,
+                next: Rc::new(RcInts::Nil)
+            }
+        )
+    };
+    let rc = Rc::new(a);
+    println!("count after creating: {}", Rc::strong_count(&rc));
+    let b = RcInts::Cons {
+        value: 3,
+        next: Rc::clone(&rc)
+    };
+    println!("count after b: {}", Rc::strong_count(&rc));
+    {
+        let c = RcInts::Cons {
+            value: 4,
+            next: Rc::clone(&rc)
+        };
+        println!("count after c: {}", Rc::strong_count(&rc));
+    }
+    println!("count after c goes: {}", Rc::strong_count(&rc));
 }
