@@ -9,6 +9,7 @@ pub fn run() {
 
     _0101();
     _0102();
+    _0103();
     todo!();
 }
 
@@ -50,5 +51,34 @@ fn _0102() {
 
     for it in rx {
         println!("it: {it}");
+    }
+}
+
+fn _0103() {
+    println!("\nSending Multiple Values and Seeing the Receiver Waiting");
+
+    let (tx1, rx) = mpsc::channel();
+    let tx2 = tx1.clone();
+
+    std::thread::spawn(move || {
+        let number = 1;
+        for it in (number * 10 + 1)..(number * 10 + 10) {
+            let message = format!("from[{number}]: {it}");
+            tx1.send(message).unwrap();
+            std::thread::sleep(Duration::from_millis(128));
+        }
+    });
+
+    std::thread::spawn(move || {
+        let number = 2;
+        for it in (number * 10 + 1)..(number * 10 + 10) {
+            let message = format!("from[{number}]: {it}");
+            tx2.send(message).unwrap();
+            std::thread::sleep(Duration::from_millis(256));
+        }
+    });
+
+    for it in rx {
+        println!("{it}");
     }
 }
