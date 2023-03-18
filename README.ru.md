@@ -19,7 +19,7 @@
 - [x] [#13](https://doc.rust-lang.ru/book/ch13-00-functional-features.html)
 - [ ] [#14](https://doc.rust-lang.ru/book/ch14-00-more-about-cargo.html) смотри [сюда](https://github.com/kepocnhh/rust_book14) и [сюда](https://github.com/kepocnhh/rust_book1403)
 - [x] [#15](https://doc.rust-lang.ru/book/ch15-00-smart-pointers.html)
-- [ ] [#16](https://doc.rust-lang.ru/book/ch16-00-concurrency.html)
+- [x] [#16](https://doc.rust-lang.ru/book/ch16-00-concurrency.html)
 - [ ] [#17](https://doc.rust-lang.ru/book/ch17-00-oop.html)
 - [ ] [#18](https://doc.rust-lang.ru/book/ch18-00-patterns.html)
 - [ ] [#19](https://doc.rust-lang.ru/book/ch19-00-advanced-features.html)
