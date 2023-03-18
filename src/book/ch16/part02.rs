@@ -8,6 +8,7 @@ pub fn run() {
     println!("\n\t{:02}/{:02}\t\"{TITLE}\"", CHAPTER, PART);
 
     _0101();
+    _0102();
     todo!();
 }
 
@@ -32,5 +33,22 @@ fn _0101() {
         Err(error) => {
             println!("Error: {error}");
         }
+    }
+}
+
+fn _0102() {
+    println!("\nChannels and Ownership Transference");
+
+    let (tx, rx) = mpsc::channel();
+
+    std::thread::spawn(move || {
+        for it in 1..10 {
+            tx.send(it.to_string()).unwrap();
+            std::thread::sleep(Duration::from_millis(128));
+        }
+    });
+
+    for it in rx {
+        println!("it: {it}");
     }
 }
