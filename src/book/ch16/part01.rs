@@ -8,7 +8,7 @@ pub fn run() {
 
     _0101();
     _0102();
-    todo!();
+    _0103();
 }
 
 fn _0101() {
@@ -48,5 +48,17 @@ fn _0102() {
         std::thread::sleep(Duration::from_millis(1));
     }
 
+    handle.join().unwrap();
+}
+
+fn _0103() {
+    println!("\nUsing move Closures with Threads");
+
+    let v = vec![1, 2, 3];
+    println!("Before vector: {v:?}");
+    let handle = std::thread::spawn(move || {
+        println!("Inside vector: {v:?}");
+    });
+    // println!("Outside vector: {v:?}"); // moved
     handle.join().unwrap();
 }
