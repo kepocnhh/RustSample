@@ -5,7 +5,6 @@ pub fn run() {
     println!("\n\t{:02}/{:02}\t\"{TITLE}\"", CHAPTER, PART);
 
     _01();
-    todo!();
 }
 
 mod _1701 {
