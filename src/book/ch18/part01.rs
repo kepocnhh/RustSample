@@ -7,6 +7,7 @@ pub fn run() {
     _01();
     _02();
     _03();
+    _04();
     todo!();
 }
 
@@ -50,5 +51,13 @@ fn _03() {
     stack.push(3);
     while let Some(value) = stack.pop() {
         println!("{value}");
+    }
+}
+
+fn _04() {
+    println!("\nfor Loops");
+
+    for (index, value) in vec!['a', 'b', 'c'].iter().enumerate() {
+        println!("{value} is at index {index}");
     }
 }
