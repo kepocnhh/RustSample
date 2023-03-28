@@ -5,6 +5,7 @@ pub fn run() {
     println!("\n\t{:02}/{:02}\t\"{TITLE}\"", CHAPTER, PART);
 
     _01();
+    _02();
     todo!();
 }
 
@@ -19,4 +20,22 @@ fn _01() {
     };
     assert_eq!(initial + 1, incremented);
     println!("incremented({incremented}) = initial({initial}) + 1");
+}
+
+fn _02() {
+    println!("\nConditional if let Expressions");
+
+    let favorite_color: Option<&str> = None;
+    let is_tuesday = false;
+    let age: Result<u8, _> = "34".parse();
+
+    if let Some(value) = favorite_color {
+        println!("Favorite color: {value}");
+    } else if is_tuesday {
+        println!("Is tuesday.");
+    } else if let Ok(value) = age {
+        println!("Age: {value}");
+    } else {
+        panic!("Illegal state!");
+    }
 }
