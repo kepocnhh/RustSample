@@ -8,6 +8,7 @@ pub fn run() {
     _02();
     _03();
     _04();
+    _05();
     todo!();
 }
 
@@ -60,4 +61,14 @@ fn _04() {
     for (index, value) in vec!['a', 'b', 'c'].iter().enumerate() {
         println!("{value} is at index {index}");
     }
+}
+
+fn _05() {
+    println!("\nlet Statements");
+
+    // let (x, y) = (1, 2, 3); // error
+    let (x, y, _) = (1, 2, 3);
+    let (x, y, z) = (1, 2, 3);
+    // let (x, y, z) = (1, 2); // error
+    println!("x: {x}, y: {y}, z: {z}");
 }
