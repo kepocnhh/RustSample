@@ -9,7 +9,7 @@ pub fn run() {
     _03();
     _04();
     _05();
-    todo!();
+    _06();
 }
 
 fn _01() {
@@ -71,4 +71,15 @@ fn _05() {
     let (x, y, z) = (1, 2, 3);
     // let (x, y, z) = (1, 2); // error
     println!("x: {x}, y: {y}, z: {z}");
+}
+
+fn on_tuple((left, right): (&str, &str)) {
+    println!("left: {left}, right: {right}");
+}
+
+fn _06() {
+    println!("\nFunction Parameters");
+
+    let tuple = ("<", ">");
+    on_tuple(tuple);
 }
