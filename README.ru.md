@@ -21,7 +21,7 @@
 - [x] [#15](https://doc.rust-lang.ru/book/ch15-00-smart-pointers.html)
 - [x] [#16](https://doc.rust-lang.ru/book/ch16-00-concurrency.html)
 - [x] [#17](https://doc.rust-lang.ru/book/ch17-00-oop.html)
-- [ ] [#18](https://doc.rust-lang.ru/book/ch18-00-patterns.html)
+- [x] [#18](https://doc.rust-lang.ru/book/ch18-00-patterns.html)
 - [ ] [#19](https://doc.rust-lang.ru/book/ch19-00-advanced-features.html)
 - [ ] [#20](https://doc.rust-lang.ru/book/ch20-00-final-project-a-web-server.html)
 - [ ] [#21](https://doc.rust-lang.ru/book/appendix-00.html)
