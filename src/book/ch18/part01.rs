@@ -6,6 +6,7 @@ pub fn run() {
 
     _01();
     _02();
+    _03();
     todo!();
 }
 
@@ -37,5 +38,17 @@ fn _02() {
         println!("Age: {value}");
     } else {
         panic!("Illegal state!");
+    }
+}
+
+fn _03() {
+    println!("\nwhile let Conditional Loops");
+
+    let mut stack = Vec::new();
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+    while let Some(value) = stack.pop() {
+        println!("{value}");
     }
 }
