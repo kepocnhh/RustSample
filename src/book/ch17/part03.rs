@@ -5,6 +5,7 @@ pub fn run() {
     println!("\n\t{:02}/{:02}\t\"{TITLE}\"", CHAPTER, PART);
 
     _01();
+    _02();
 }
 
 mod blog {
@@ -142,6 +143,70 @@ fn _01() {
     assert_eq!("", post.content());
 
     post.approve();
+    let actual = post.content();
+    assert_eq!(expected, actual);
+    println!("expected: '{expected}'");
+    println!("actual: '{actual}'");
+}
+
+mod _02 {
+    pub struct DraftPost {
+        content: String
+    }
+
+    impl DraftPost {
+        pub fn new() -> DraftPost {
+            return DraftPost {
+                content: String::from("")
+            }
+        }
+
+        pub fn add_text(&mut self, text: &str) {
+            self.content.push_str(text);
+        }
+
+        pub fn request_review(self) -> PendingReviewPost {
+            return PendingReviewPost { content: self.content };
+        }
+    }
+
+    pub struct PendingReviewPost {
+        content: String
+    }
+
+    impl PendingReviewPost {
+        pub fn reject(self) -> DraftPost {
+            return DraftPost { content: self.content }
+        }
+
+        pub fn approve(self) -> PublishedPost {
+            return PublishedPost { content: self.content }
+        }
+    }
+
+    pub struct PublishedPost {
+        content: String
+    }
+
+    impl PublishedPost {
+        pub fn content(&self) -> &str {
+            return &self.content;
+        }
+    }
+}
+
+fn _02() {
+    println!("\nDefining Post and Creating a New Instance in the Draft State");
+
+    let mut post = _02::DraftPost::new();
+
+    post.add_text("foo");
+    let post = post.request_review();
+    let mut post = post.reject();
+    post.add_text("bar");
+    let post = post.request_review();
+    let post = post.approve();
+    let expected = "foobar";
     let actual = post.content();
     assert_eq!(expected, actual);
     println!("expected: '{expected}'");
