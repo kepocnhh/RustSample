@@ -8,7 +8,7 @@ pub fn run() {
     _02();
     _03();
     _04();
-    todo!();
+    _05();
 }
 
 fn _01() {
@@ -182,5 +182,23 @@ fn _04() {
         4 | 5 | 6 if yes_or_no => println!("yes({x})"),
         _ if yes_or_no => println!("yes"),
         _ => println!("no"),
+    }
+}
+
+fn _05() {
+    println!("\n@ Bindings");
+
+    let foo = Foo { x: 1, y: 2 };
+
+    match foo {
+        Foo {
+            x: _,
+            y: value @ 0
+        } => println!("y is {value}"),
+        Foo {
+            x: _,
+            y: 1
+        } => println!("y is {}", foo.y),
+        Foo { x: _ignored, y } => println!("y is {y}"),
     }
 }
