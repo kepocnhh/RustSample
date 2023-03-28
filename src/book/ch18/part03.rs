@@ -7,6 +7,7 @@ pub fn run() {
     _01();
     _02();
     _03();
+    _04();
     todo!();
 }
 
@@ -149,4 +150,37 @@ fn _03() {
         println!("None");
     }
     println!("{s:?}");
+}
+
+fn _04() {
+    println!("\nExtra Conditionals with Match Guards");
+
+    let num = Some(4);
+    match num {
+        Some(x) if x % 2 == 0 => println!("The number {x} is even"),
+        Some(x) => println!("The number {x} is odd"),
+        None => println!("None"),
+    }
+
+    match 4 {
+        x if x % 2 == 0 => println!("The number {x} is even"),
+        x => println!("The number {x} is odd"),
+    }
+
+    let x = Some(5);
+    let y = 10;
+    match x {
+        Some(50) => println!("some 50"),
+        Some(it) if it == y => println!("some {y}"),
+        Some(_) => println!("some any"),
+        None => println!("none"),
+    }
+
+    let x = 4;
+    let yes_or_no = false;
+    match x {
+        4 | 5 | 6 if yes_or_no => println!("yes({x})"),
+        _ if yes_or_no => println!("yes"),
+        _ => println!("no"),
+    }
 }
