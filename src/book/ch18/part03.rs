@@ -80,6 +80,7 @@ enum Bar {
     Str(String),
     Tuple { left: i32, right: String },
     Inner(Foo),
+    Triple(u8, u8, u8),
 }
 
 trait Calculator {
@@ -111,6 +112,7 @@ fn _03() {
         Bar::Inner(Foo { x: 0, .. }) => println!("x is 0"),
         Bar::Inner(Foo { y: 0, .. }) => println!("y is 0"),
         Bar::Inner(Foo { x, y } ) => println!("x: {x}, y: {y}"),
+        Bar::Triple(first, .., last) => println!("first: {first}, last: {last}"),
     }
 
     let foo = Some("foo");
@@ -127,5 +129,24 @@ fn _03() {
         }
     }
 
-    todo!();
+    let _x = 5;
+    let _y = 10;
+
+    let s = Some(String::from("Hello!"));
+    if let Some(_) = s {
+        println!("some any");
+    }
+    // if let Some(value) = s {
+    //     println!("some '{value}' (borrow)");
+    // }
+    // if let Some(_ignored) = s {
+    //     println!("some ignored value (borrow)");
+    // }
+    if let Some(_ignored) = &s {
+        println!("some ignored value (not borrow)");
+    }
+    if let None = s {
+        println!("None");
+    }
+    println!("{s:?}");
 }
