@@ -7,7 +7,6 @@ pub fn run() {
     _01();
     _02();
     _03();
-    todo!();
 }
 
 fn _01() {
@@ -101,3 +100,6 @@ fn _03() {
         println!("COUNTER: {COUNTER}");
     }
 }
+
+// todo unsafe trait
+// todo union
