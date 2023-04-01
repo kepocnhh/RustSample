@@ -6,6 +6,7 @@ pub fn run() {
 
     _01();
     _02();
+    _03();
     todo!();
 }
 
@@ -84,4 +85,19 @@ fn _02() {
     right[1] = 4;
     assert_eq!(reference, &[1, 2, 3, 4, 5, 6]);
     println!("my_split_at_mut: {reference:?}");
+}
+
+static HELLO_WORLD: &str = "Hello, world!";
+static mut COUNTER: u32 = 0;
+
+fn _03() {
+    println!("\nAccessing or Modifying a Mutable Static Variable");
+
+    println!("HELLO_WORLD: {HELLO_WORLD}");
+
+    // Use of mutable static is unsafe and requires unsafe function or block
+    unsafe {
+        COUNTER += 1;
+        println!("COUNTER: {COUNTER}");
+    }
 }
