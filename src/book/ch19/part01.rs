@@ -5,6 +5,7 @@ pub fn run() {
     println!("\n\t{:02}/{:02}\t\"{TITLE}\"", CHAPTER, PART);
 
     _01();
+    _02();
     todo!();
 }
 
@@ -35,4 +36,52 @@ fn _01() {
     unsafe {
         // println!("r3 dereferenced: {}", *r3); // segmentation fault
     }
+}
+
+unsafe fn unsafefn() {
+    println!("unsafe function");
+}
+
+fn my_split_at_mut(list: &mut [u32], mid: usize) -> (&mut [u32], &mut [u32]) {
+    let len = list.len();
+    assert!(mid <= len);
+    let ptr = list.as_mut_ptr();
+    return unsafe {
+        (
+            std::slice::from_raw_parts_mut(ptr, mid),
+            std::slice::from_raw_parts_mut(ptr.add(mid), len - mid),
+        )
+    };
+    // return (&mut list[..mid], &mut list[mid..]); // cannot borrow as mutable more than once at a time
+}
+
+fn _02() {
+    println!("\nCalling an Unsafe Function or Method");
+
+    unsafe {
+        unsafefn();
+    }
+
+    let initial = [1, 0, 3, 0, 5, 6];
+    let mid = 2;
+
+    let mut list = initial.clone();
+    let reference = &mut list;
+    let (left, right) = reference.split_at_mut(mid);
+    assert_eq!(left, [1, 0]);
+    assert_eq!(right, [3, 0, 5, 6]);
+    left[1] = 2;
+    right[1] = 4;
+    assert_eq!(reference, &[1, 2, 3, 4, 5, 6]);
+    println!("split_at_mut: {reference:?}");
+
+    let mut list = initial.clone();
+    let reference = &mut list;
+    let (left, right) = my_split_at_mut(reference, mid);
+    assert_eq!(left, [1, 0]);
+    assert_eq!(right, [3, 0, 5, 6]);
+    left[1] = 2;
+    right[1] = 4;
+    assert_eq!(reference, &[1, 2, 3, 4, 5, 6]);
+    println!("my_split_at_mut: {reference:?}");
 }
