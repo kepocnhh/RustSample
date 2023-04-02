@@ -10,6 +10,7 @@ pub fn run() {
     _02();
     _03();
     _04();
+    _05();
 }
 
 trait Foo {
@@ -146,4 +147,19 @@ fn _04() {
 
     let foo = String::from("bar");
     foo.square_print();
+}
+
+struct Wrapper(Vec<String>);
+
+impl std::fmt::Display for Wrapper {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "[{}]", self.0.join(", "))
+    }
+}
+
+fn _05() {
+    println!("\nUsing the Newtype Pattern to Implement External Traits on External Types");
+
+    let it = Wrapper(vec![String::from("hello"), String::from("world")]);
+    println!("wrapped: {it}");
 }
