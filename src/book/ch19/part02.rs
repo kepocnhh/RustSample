@@ -8,6 +8,7 @@ pub fn run() {
 
     _01();
     _02();
+    _03();
     todo!();
 }
 
@@ -48,18 +49,18 @@ fn _01() {
 
 struct MyU8(u8);
 
-impl Add for MyU8 {
+impl Add for &MyU8 {
     type Output = MyU8;
     fn add(self, rhs: Self) -> Self::Output {
-        return MyU8(self.0 + rhs.0)
+        return MyU8(self.0 + rhs.0);
     }
 }
 
-impl Add<u8> for MyU8 {
+impl Add<u8> for &MyU8 {
     type Output = MyU8;
 
     fn add(self, rhs: u8) -> Self::Output {
-        return MyU8(self.0 + rhs)
+        return MyU8(self.0 + rhs);
     }
 }
 
@@ -69,7 +70,61 @@ fn _02() {
     let m1 = MyU8(2);
     let m2 = MyU8(3);
     let m3: u8 = 4;
-    assert_eq!(m1.0 + m2.0, 5);
-    assert_eq!(m2.0 + m3, 7);
+    assert_eq!((&m1 + &m2).0, 5);
+    assert_eq!((&m2 + m3).0, 7);
     println!("m1: {}, m2: {}, m3:{m3}", m1.0, m2.0);
+}
+
+trait T1 {
+    fn foo(&self);
+    fn bar();
+}
+
+trait T2 {
+    fn foo(&self);
+    fn bar();
+}
+
+struct S1;
+
+impl S1 {
+    fn foo(&self) {
+        println!("S1::foo")
+    }
+
+    fn bar() {
+        println!("S1::bar")
+    }
+}
+
+impl T1 for S1 {
+    fn foo(&self) {
+        println!("T1::foo")
+    }
+
+    fn bar() {
+        println!("T1::bar")
+    }
+}
+
+impl T2 for S1 {
+    fn foo(&self) {
+        println!("T2::foo")
+    }
+
+    fn bar() {
+        println!("T2::bar")
+    }
+}
+
+fn _03() {
+    println!("\nFully Qualified Syntax for Disambiguation: Calling Methods with the Same Name");
+
+    let s1 = S1;
+    s1.foo();
+    T1::foo(&s1);
+    T2::foo(&s1);
+    S1::bar();
+    <S1 as T1>::bar();
+    <S1 as T2>::bar();
 }
