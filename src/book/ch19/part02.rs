@@ -9,7 +9,7 @@ pub fn run() {
     _01();
     _02();
     _03();
-    todo!();
+    _04();
 }
 
 trait Foo {
@@ -127,4 +127,23 @@ fn _03() {
     S1::bar();
     <S1 as T1>::bar();
     <S1 as T2>::bar();
+}
+
+trait SquarePrint: std::fmt::Display {
+    fn square_print(&self) {
+        let value = self.to_string();
+        let len = value.len();
+        println!("+{}+", "-".repeat(len + 2));
+        println!("| {} |", value);
+        println!("+{}+", "-".repeat(len + 2));
+    }
+}
+
+impl SquarePrint for String {}
+
+fn _04() {
+    println!("\nUsing Supertraits to Require One Trait’s Functionality Within Another Trait");
+
+    let foo = String::from("bar");
+    foo.square_print();
 }
