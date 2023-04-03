@@ -1,4 +1,5 @@
 use std::num::ParseIntError;
+use std::ops::Deref;
 use std::str::FromStr;
 
 pub fn run() {
@@ -9,7 +10,7 @@ pub fn run() {
 
     _01();
     _02();
-    todo!();
+    _03();
 }
 
 type Kilometers = i32;
@@ -50,5 +51,42 @@ fn _02() {
         Err(_) => never_fun()
     };
     println!("num: {num}");
-    todo!();
+}
+
+fn fun1<T: std::fmt::Display>(it: T) {
+    println!("fun regular: {it}");
+}
+
+fn fun2<T: Sized + std::fmt::Display>(it: T) {
+    println!("fun sized: {it}");
+}
+
+fn fun3<T: ?Sized + std::fmt::Display>(it: &T) {
+    println!("fun optional sized: {it}");
+}
+
+trait Foo: std::fmt::Display {
+    fn run(&self);
+}
+
+impl Foo for u8 {
+    fn run(&self) {
+        println!("i am u8 Foo");
+    }
+}
+
+fn wrap<'a>(it: &'a u8) -> &'a dyn Foo {
+    return it;
+}
+
+fn _03() {
+    println!("\nDynamically Sized Types and the Sized Trait");
+    let it = wrap(&1);
+    // let it: &dyn Foo = &1u8;
+    fun1(it);
+    let it = wrap(&1);
+    fun2(it);
+    let it = wrap(&1);
+    fun3(&it);
+    // todo ?
 }
