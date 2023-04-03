@@ -1,3 +1,4 @@
+use std::num::ParseIntError;
 use std::str::FromStr;
 
 pub fn run() {
@@ -7,6 +8,7 @@ pub fn run() {
     println!("\n\t{:02}/{:02}\t\"{TITLE}\"", CHAPTER, PART);
 
     _01();
+    _02();
     todo!();
 }
 
@@ -34,4 +36,19 @@ fn _01() {
     println!("result: {result:?}");
     let result: Result<u8> = u8::from_str("1");
     println!("result: {result:?}");
+}
+
+fn never_fun() -> ! {
+    panic!("never!");
+}
+
+fn _02() {
+    println!("\nThe Never Type that Never Returns");
+
+    let num: u8 = match "1".parse::<u8>() {
+        Ok(it) => it,
+        Err(_) => never_fun()
+    };
+    println!("num: {num}");
+    todo!();
 }
