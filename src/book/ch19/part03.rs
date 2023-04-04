@@ -1,5 +1,3 @@
-use std::num::ParseIntError;
-use std::ops::Deref;
 use std::str::FromStr;
 
 pub fn run() {
