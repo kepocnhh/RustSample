@@ -5,7 +5,7 @@ pub fn run() {
     println!("\n\t{:02}/{:02}\t\"{TITLE}\"", CHAPTER, PART);
 
     _01();
-    todo!();
+    _02();
 }
 
 #[macro_export]
@@ -45,4 +45,11 @@ fn _01() {
     println!("number: {number}");
     let number = num_args!(1, "foo", false);
     println!("number: {number}");
+}
+
+fn _02() {
+    println!("\nHow to Write a Custom derive Macro");
+    // todo foo_derive?
+    // todo Attribute-like macros?
+    // todo Function-like macros?
 }
